@@ -11,19 +11,16 @@ export default function MenuHambur() {
       <Navbar>
         <section>
           <HamburgerMenu onClick={() => SetCLick(!click)}>
-            <label
-              className={click ? "toggle active" : "toggle"}
-              for="checkbox"
-            >
-              <div class="bars" id="bar1"></div>
-              <div class="bars" id="bar2"></div>
-              <div class="bars" id="bar3"></div>
+            <label className={click ? "toggle active" : "toggle"}>
+              <div className="bars" id="bar1"></div>
+              <div className="bars" id="bar2"></div>
+              <div className="bars" id="bar3"></div>
             </label>
           </HamburgerMenu>
         </section>
         <Menu $click={click.toString()}>
           {LinksArray.map(({ icon, label, to }) => (
-            <div className="LinkContainer">
+            <div className="LinkContainer" key={label}>
               <NavLink
                 onClick={() => SetCLick(!click)}
                 to={to}
@@ -43,7 +40,7 @@ export default function MenuHambur() {
             >
               <NavLink to={to} className="Links">
                 <div className="Linkicon">{icon}</div>
-                <label htmlFor="">{label}</label>
+                <label>{label}</label>
               </NavLink>
             </div>
           ))}

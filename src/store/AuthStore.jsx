@@ -1,13 +1,16 @@
 import { create } from "zustand";
+import { supabase } from "../supabase/subapase.config";
 export const useAuthStore = create((set, get) => ({
   signInWithEmail: async (p) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email: p.correo,
-      password: p.password,
+      password: p.pass,
     });
+
     if (error) {
       return null;
     }
+    return data;
   },
   signOut: async () => {
     const { error } = await supabase.auth.signOut();
